@@ -1,5 +1,6 @@
 package com.capgemini.productapp.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +39,17 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteProduct(Product product) {
 		productRepository.delete(product);
 	}
-	@Override
-	public Product findProductByCategory(String productCategory) throws ProductNotFoundException {
-	Optional<Product> optionalProduct = productRepository.findByCategory(productCategory);
-	if(optionalProduct.isPresent())
-		return optionalProduct.get();
-	throw new ProductNotFoundException("Product does not exists");
-}
 
+	@Override
+	public List<Product> findProductByName(String name) throws ProductNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> findProductByCategory(String Category) throws ProductNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

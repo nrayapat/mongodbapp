@@ -1,5 +1,7 @@
 package com.capgemini.productapp.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.productapp.entity.Product;
@@ -77,10 +80,13 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/name")
-	public ResponseEntity<Product> findProductByCategory(@PathVariable String productCategory){
+	public ResponseEntity<List<Product>> findProductByName(@RequestParam String productName){
+		return new ResponseEntity<List<Product>>(productService.findProductByName(productName), HttpStatus.OK);
+	}
+	@GetMapping("/products/category")
+	public ResponseEntity<List<Product>> findProductByCategory(@RequestParam String productCategory){
+		return new ResponseEntity<List<Product>>(productService.findProductByCategory(productCategory), HttpStatus.OK);
 		
 	}
-	
-		
-	}
+}
 
